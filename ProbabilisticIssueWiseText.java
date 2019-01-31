@@ -6,5 +6,9 @@ interface ProbabilisticIssueWiseText extends IssueWiseText {
   List<? extends ProbableIssue> issues();
 
   @Override
-  ProbabilisticIssueWiseText filtered(Predicate<? super Issue> issueFilter);
+  default ProbabilisticIssueWiseText filtered(Predicate<? super Issue> issueFilter) {
+    return filteredProbabilistic(issueFilter);
+  }
+
+  ProbabilisticIssueWiseText filteredProbabilistic(Predicate<? super ProbableIssue> issueFilter);
 }
