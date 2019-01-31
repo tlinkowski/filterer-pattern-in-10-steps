@@ -11,6 +11,13 @@ class Usage {
             .collect(IssueCoverage.collector());
   }
 
+  static double issueCoverage(
+          Stream<? extends IssueWiseText<? extends ProbableIssue>> textStream, double minProbability) {
+    return textStream
+            .map(text -> text.filtered(issue -> issue.probability() >= minProbability))
+            .collect(IssueCoverage.collector());
+  }
+
   static Stream<IssueWiseText<Issue>> testCaseStream() {
     return Stream.of();
   }
