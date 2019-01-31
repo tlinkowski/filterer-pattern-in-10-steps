@@ -1,0 +1,4 @@
+enum IssueType {
+  GRAMMAR,
+  SPELLING
+}
