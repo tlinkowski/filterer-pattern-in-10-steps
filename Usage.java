@@ -5,6 +5,12 @@ class Usage {
     return textStream.collect(IssueCoverage.collector());
   }
 
+  static double issueCoverage(Stream<? extends IssueWiseText<?>> textStream, IssueType issueType) {
+    return textStream
+            .map(text -> text.filtered(issue -> issue.type() == issueType))
+            .collect(IssueCoverage.collector());
+  }
+
   static Stream<IssueWiseText<Issue>> testCaseStream() {
     return Stream.of();
   }
