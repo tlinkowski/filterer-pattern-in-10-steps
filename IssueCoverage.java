@@ -1,7 +1,7 @@
 import java.util.stream.Collector;
 
 class IssueCoverage {
-  static Collector<IssueWiseText, ?, Double> collector() {
+  static Collector<IssueWiseText<?>, ?, Double> collector() {
     return Collector.of(
             Accumulator::new, Accumulator::accumulate, Accumulator::combine, Accumulator::finish,
             Collector.Characteristics.UNORDERED
@@ -12,7 +12,7 @@ class IssueCoverage {
     int totalIssueLength = 0;
     int totalTextLength = 0;
 
-    void accumulate(IssueWiseText issueWiseText) {
+    void accumulate(IssueWiseText<?> issueWiseText) {
       totalIssueLength += issueWiseText.issues().stream().mapToInt(Issue::length).sum();
       totalTextLength += issueWiseText.text().length();
     }

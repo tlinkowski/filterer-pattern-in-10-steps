@@ -1,7 +1,7 @@
 import java.util.List;
 
-interface IssueWiseText {
+interface IssueWiseText<I extends Issue> {
   String text(); // e.g. "You migth know it."
 
-  List<Issue> issues(); // e.g. ["migth"]
+  List<I> issues(); // e.g. ["migth"]
 }
